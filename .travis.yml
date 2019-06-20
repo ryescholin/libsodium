@@ -4,6 +4,7 @@ language: c
 
 os:
   - linux
+  - linux-ppc64le
 
 compiler:
   - clang
