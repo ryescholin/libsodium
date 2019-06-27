@@ -12,6 +12,8 @@ compiler:
 
 before_install:
   - sudo apt-get update
+  - sudo apt-get install tcc qemu-user-static gcc-powerpc-linux-gnu
+
 
 install:
   - ./autogen.sh
@@ -39,9 +41,3 @@ after_success:
   - env QEMU_LD_PREFIX=/usr/powerpc-linux-gnu make check
   - make clean > /dev/null
 
-addons:
-  apt:
-    packages:
-      - tcc
-      - qemu-user-static
-      - gcc-powerpc-linux-gnu
