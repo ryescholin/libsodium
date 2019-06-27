@@ -9,6 +9,7 @@ compiler:
   - clang
   - gcc
   - g++
+  - cpp
 
 before_install:
   - sudo apt-get update
