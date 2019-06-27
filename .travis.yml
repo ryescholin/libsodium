@@ -10,6 +10,9 @@ compiler:
   - gcc
   - g++
 
+before_install:
+  - sudo apt-get update
+
 install:
   - ./autogen.sh
   - env CC=tcc CFLAGS='-w' CPPFLAGS="-DDEV_MODE=1" ./configure --prefix=/tmp --disable-dependency-tracking --disable-shared || cat config.log
