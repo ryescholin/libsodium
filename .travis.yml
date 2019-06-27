@@ -12,7 +12,7 @@ compiler:
 
 before_install:
   - sudo apt-get update
-  - sudo apt-get install tcc qemu-user-static gcc-powerpc-linux-gnu
+#  - sudo apt-get install tcc qemu-user-static gcc-powerpc-linux-gnu
 
 
 install:
