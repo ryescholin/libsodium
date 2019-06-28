@@ -12,9 +12,8 @@ compiler:
   - g++
 
 before_install:
-  - sudo yum update
-  - sudo yum install -y tcc qemu-user-static gcc-powerpc-linux-gnu
-# tcc
+  - sudo apt-get update
+  - sudo apt-get install -y tcc qemu-user-static gcc-powerpc-linux-gnu
 
 
 install:
