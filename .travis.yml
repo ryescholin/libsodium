@@ -13,14 +13,14 @@ compiler:
 
 before_install:
   - sudo apt-get update
-  - sudo apt-get install -y binfmt-support tcc qemu-user-static gcc-powerpc-linux-gnu
+  - sudo apt-get install -y distcc qemu-user-static gcc-powerpc-linux-gnu
 
 
 install:
   - ./autogen.sh
-  - env CC=tcc CFLAGS='-w' CPPFLAGS="-DDEV_MODE=1" ./configure --prefix=/tmp --disable-dependency-tracking --disable-shared || cat config.log
+  - env CC=distcc CFLAGS='-w' CPPFLAGS="-DDEV_MODE=1" ./configure --prefix=/tmp --disable-dependency-tracking --disable-shared || cat config.log
   - make -j $(nproc) && make check && make install
-  - env CC=tcc CPPFLAGS='-I/tmp/include' LDFLAGS='-L/tmp/lib' LD_LIBRARY_PATH='/tmp/lib' ./test/constcheck.sh
+  - env CC=distcc CPPFLAGS='-I/tmp/include' LDFLAGS='-L/tmp/lib' LD_LIBRARY_PATH='/tmp/lib' ./test/constcheck.sh
   - make uninstall
   - make distclean
 
@@ -42,3 +42,4 @@ after_success:
   - env QEMU_LD_PREFIX=/usr/powerpc-linux-gnu make check
   - make clean > /dev/null
 
+dist: xenial
