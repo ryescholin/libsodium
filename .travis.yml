@@ -7,7 +7,7 @@ os:
   - linux-ppc64le
 
 compiler:
-  - clang
+#  - clang
   - gcc
   - g++
 
