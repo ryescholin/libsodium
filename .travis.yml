@@ -18,9 +18,9 @@ before_install:
 #env CC=tcc
 install:
   - ./autogen.sh
-  - env CFLAGS='-w' CPPFLAGS="-DDEV_MODE=1" ./configure --prefix=/tmp --disable-dependency-tracking --disable-shared || cat config.log
+  - env CC=gcc CFLAGS='-w' CPPFLAGS="-DDEV_MODE=1" ./configure --prefix=/tmp --disable-dependency-tracking --disable-shared || cat config.log
   - make -j $(nproc) && make check && make install
-  - env CPPFLAGS='-I/tmp/include' LDFLAGS='-L/tmp/lib' LD_LIBRARY_PATH='/tmp/lib' ./test/constcheck.sh
+  - env CC=gcc CPPFLAGS='-I/tmp/include' LDFLAGS='-L/tmp/lib' LD_LIBRARY_PATH='/tmp/lib' ./test/constcheck.sh
   - make uninstall
   - make distclean
 
